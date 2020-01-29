@@ -1,2 +1,1 @@
-# Welcome to CMSC389N Spring 2020
-
+# Welcome to CMSC389N Spring 2020!
