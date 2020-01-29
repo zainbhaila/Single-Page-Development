@@ -1,2 +1,2 @@
-# cmsc389NSpring2020-student
+# Welcome to CMSC389N Spring 2020
 
