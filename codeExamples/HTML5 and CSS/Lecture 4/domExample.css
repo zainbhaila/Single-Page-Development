@@ -14,9 +14,8 @@ body
 	}
 
 /* This demonstrates accessing and manipulating using the DOM (Document Object Model) */
-
+/*Color the ice cream red!*/
 	
-#front-door #kitchen #fridge p 
-	{
-	font-weight: bold;
-	}
+#kitchen {
+	color: red;
+}
