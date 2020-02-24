@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>JS Object Example</title>
+</head>
+
+<body>
+	<script>
+		    "use strict";
+        class Person{
+            constructor(fName, lName, age, shoeSize){
+                this.name = fName;
+                this.lName  = lName
+                this.myAge = age;
+                this.shoeSize = shoeSize;
+
+            }
+           
+            fullName(){
+                return this.name;// + " "+ this.lName;
+            }
+        }
+
+        class Student extends Person{
+            constructor (gpa, year, major){
+                super("Andre", "3000", 45 ,12);
+                this.gpa = gpa;
+                this.year = year;
+                this.major = major;
+            }
+            fullName(){
+                return this.name +" " + this.year;
+            }
+        }
+
+        let p = new Person("Joe", "Schmoe", 35, 10);
+        let p2 = new Student(2.7, "Soph" , "Comp Sci");
+      console.log(p2.fullName());
+      
+	</script>
+</body>
+
+</html>

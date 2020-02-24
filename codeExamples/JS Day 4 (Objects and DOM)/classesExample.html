@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>JS Class Example</title>
+</head>
+
+<body>
+	<script>
+        "use strict";
+        class Person{
+            constructor(fName, lName, age, shoeSize){
+                this.name = fName;
+                //what needs to happen here?
+                this.myAge = age;
+                this.shoeSize = shoeSize;
+
+            }
+            // constructor(){
+            //     this.name = "Andre";
+            //     this.myAge = 45;
+            //     this.shoeSize = 12;
+            // }
+            fullName(){
+                return this.name + " "+ this.lName;
+            }
+        }
+
+
+        let p = new Person("Joe", "Schmoe", 35, 10);
+        console.log(p.fullName());
+       // let p2 = new Person();
+        //console.log(p2.fullName);
+	</script>
+</body>
+
+</html>
