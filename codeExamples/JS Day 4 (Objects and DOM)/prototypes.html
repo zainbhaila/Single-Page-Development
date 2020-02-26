@@ -19,7 +19,7 @@
         function Student(name) {
             Person.call(this, name, "21");
         }
-       // Student.prototype = new Person();
+        Student.prototype = Object.create(Person);
         Student.prototype.college = function () {
             alert("UMD!");
         }
