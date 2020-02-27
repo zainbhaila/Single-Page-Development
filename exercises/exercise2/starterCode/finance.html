@@ -70,7 +70,7 @@
                 else {
                   label = prompt("Enter bill label.")
                   bills.push([amount, label])
-                  document.writeln("<p>Amount: $" + amount.toFixed(2) + ", Label: " + label + "</p>")
+                  document.writeln("<p>Amount: $" + Number(amount).toFixed(2) + ", Label: " + label + "</p>")
                 }
               }
 
@@ -86,7 +86,7 @@
 
               let savings = income * .1
               let remaining = income * .9
-              document.writeln("<p>Income: $" + income.toFixed(2) + ", Savings: $" + savings.toFixed(2) + "</p>")
+              document.writeln("<p>Income: $" + Number(income).toFixed(2) + ", Savings: $" + savings.toFixed(2) + "</p>")
 
               for (let b of bills) {
                 remaining -= b[0]
