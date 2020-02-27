@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html>
-    <head> 
+    <head>
         <meta charset="utf-8" />
-		<title>Exercise 2: Number Tables</title>	
+		<title>Exercise 2: Number Tables</title>
 	</head>
 
     <body>
         <script>
-		    //write code here ONLY
+            let input = null // current user input
+            let inputs = [] // stored previous info
+            let count = 1 // number of inputs
+            let sum = 0 // sum of all inputs
+
+            let fibonacci = function(value) { // calculate fibonacci
+              let prev = 0
+              let cur = 1
+
+              if (value == 1) {
+                return prev
+              }
+              else if (value == 2) {
+                return cur
+              }
+
+              value = value - 2 // first two values already calculated
+
+              while (value > 0) {
+                let temp = prev + cur
+                prev = cur
+                cur = temp
+                value -= 1
+              }
+
+              return cur
+            }
+
+            while (true) { // input loop exits when "done" is entered
+              input = prompt("Enter a number.")
+
+              if (input.toLowerCase() === "done") { // exit, case insensitive
+                break;
+              }
+              else if (isNaN(input) || input <= 0) { // NaN or non-positive
+                alert("Please input a positive integer.")
+              }
+              else { // valid input
+                input = Math.round(input) // fibonacci needs integer
+                sum += input
+                inputs.push([count, input, fibonacci(input)])
+                count += 1
+              }
+            }
+
+            document.write("<table style='border: solid 10px'><tr><th>Count</th><th>Value</th><th>Fibonacci Value</th></tr>")
+            for (let i of inputs) {
+              document.write("<tr><td>" + i[0] + "</td><td>" + i[1] + "</td><td>" + i[2] + "</td></tr>")
+            }
+            document.write("<tr><td>the sum of all values entered</td><td>" + sum + "</td><td></td></tr></table>")
         </script>
     </body>
 </html>

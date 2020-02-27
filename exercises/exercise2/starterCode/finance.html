@@ -1,13 +1,111 @@
 <!DOCTYPE html>
 <html>
-    <head> 
+    <head>
         <meta charset="utf-8" />
-        <title>Exercise 2: Finance</title>	
+        <title>Exercise 2: Finance</title>
     </head>
 
     <body>
         <script>
-            //write code here ONLY
+          while(true) { // run until user is done
+            let choice = prompt("Calculate 'loan' or 'budget'? Or 'done' to exit and display all results.")
+
+            if (choice.toLowerCase() === "done") { // exit calculator
+              break;
+            }
+            else if (choice.toLowerCase() === "loan") {
+              let amount = -1
+              let length = -1
+              let apr = -1
+
+              while(true) { // loop until amount is valid
+                amount = prompt("Enter loan amount.")
+                if (isNaN(amount) || amount <= 0) {
+                  alert("Amount has to be a number greater than zero.")
+                }
+                else {
+                  break;
+                }
+              }
+              while(true) { // loop until length is valid
+                length = prompt("Enter loan length in months.")
+                if (isNaN(length) || length <= 0) {
+                  alert("Length has to be a number greater than zero.")
+                }
+                else {
+                  break;
+                }
+              }
+              while(true) { // loop until apr is valid
+                apr = prompt("Enter loan APR.")
+                if (isNaN(apr) || apr < 0) {
+                  alert("Amount has to be a non-negative number.")
+                }
+                else {
+                  break;
+                }
+              }
+
+              let interest = apr * amount * length/12 // rate * amount * years
+              let total = Number(amount) + Number(interest) // total paid
+              let monthly = total/length // monthly payments to complete loan
+
+              document.writeln("<p>Total Payment: $" + total.toFixed(2) + ", Interest Payment: $" + interest.toFixed(2) + ", Monthly Payment: $" + monthly.toFixed(2) + "</p>")
+            }
+            else if (choice.toLowerCase() === "budget") {
+              let label = ""
+              let amount = 0
+              let bills = []
+              let income = 0
+
+              while(true) { // loop until amount is valid
+                amount = prompt("Enter bill amount. (-999 to exit)")
+
+                if (isNaN(amount)) {
+                  alert("Amount has to be a number.")
+                }
+                else if (amount == -999) {
+                  break;
+                }
+                else {
+                  label = prompt("Enter bill label.")
+                  bills.push([amount, label])
+                  document.writeln("<p>Amount: $" + amount.toFixed(2) + ", Label: " + label + "</p>")
+                }
+              }
+
+              while(true) { // loop until income is valid
+                income = prompt("Enter income.")
+                if (isNaN(income) || income < 0) {
+                  alert("Income has to be a non-negative number.")
+                }
+                else {
+                  break;
+                }
+              }
+
+              let savings = income * .1
+              let remaining = income * .9
+              document.writeln("<p>Income: $" + income.toFixed(2) + ", Savings: $" + savings.toFixed(2) + "</p>")
+
+              for (let b of bills) {
+                remaining -= b[0]
+              }
+
+              if (remaining < 0) { // output budget status
+                alert("Over budget.")
+              }
+              else if (remaining > 0) {
+                alert("Under budget.")
+              }
+              else {
+                alert("Right on budget.")
+              }
+            }
+            else {
+              alert("Please select either 'loan' or 'budget'.")
+            }
+          }
         </script>
     </body>
 </html>
