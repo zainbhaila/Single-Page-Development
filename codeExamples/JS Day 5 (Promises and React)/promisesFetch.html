@@ -9,12 +9,12 @@
   <body>
     <script>
       //use catch for the bad link
-       const p1 = fetch('https://api.github.com/users/egonzal5');
+       const p1 = fetch('https://api.githusk.djfb.kasjdbb.com/users/egonzal5');
        const result = p1.then(data => {
          return data.json()
        }).then(r => {
          console.log(r);
-       });
+       }).catch(err => console.log(err));
       console.log(result);
       
     </script>
