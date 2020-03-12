@@ -1,0 +1,44 @@
+
+// class FindAhmed extends React.Component{
+//     render(){
+//         let response;
+//         let responseArray = [];
+//         for (let i = 0; i<this.props.name.length; i++){
+          
+//             if(this.props.name[i] === "Ahmed"){
+//                response =( <div key = {this.props.name[i]}>
+//                 <h1>I found {this.props.name[i]}</h1>
+//                 </div>);
+               
+//             }else{
+//                 response= (<div key = {this.props.name[i]}>
+//                     <h1>I didn't find Ahmed</h1>
+//                 </div>);
+               
+//             }
+//             responseArray.push(response);
+//         }
+    
+       
+    
+//     return responseArray;
+    
+//     }
+// }
+class FindAhmedPush extends React.Component{
+
+    render(){
+        let results = [];
+        for(let i =0; i<this.props.name.length; i++){
+            if(this.props.name[i] === "Ahmed"){
+                 results.push(<div key = {this.props.name[i]}> <h1>I Found {this.props.name[i]}</h1></div>);
+            }else{
+                results.push(<div key = {this.props.name[i]}> <h1>{this.props.name[i]} is not Ahmed</h1></div>);
+            }
+        }
+        return results;
+   
+}
+}
+
+//ReactDOM.render(<FindAhmed name = {["Elias,"Joe","Rachel", "Millie", "Ahmed"]}/>, document.getElementById('root'));

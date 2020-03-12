@@ -1,0 +1,26 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Logo from './Coco.png';
+
+
+class BusinessCard extends React.Component{
+
+    render(){
+        return (
+            <div>
+                <h1>Hi</h1>
+                <img src = {this.props.imagesrc} height = {this.props.height} width = {this.props.width}/>
+		//Could also be: <img src = {Logo} height = {this.props.height} width = {this.props.width}/>
+                <p>This is Coco, she's a coonhound</p>
+                <p>You May Reach her here: <a href = {this.props.link}>egonzal5@umd.edu</a></p>
+            </div>
+        );
+    }
+
+}
+
+
+
+
+
+ReactDOM.render(<BusinessCard imagesrc = {Logo} width = {400} height ={500} link= {https://twitter.com/dog_rates?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor}/>, document.getElementById('root'));
