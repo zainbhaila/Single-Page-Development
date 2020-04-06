@@ -6,20 +6,16 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: [
-        {
-          squares: Array(9).fill(null)
-        }
-      ],
+      history: [{squares: Array(9).fill(null)}],
       stepNumber: 0,
       xIsNext: true
     };
   }
 
   handleClick(i) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    const current = history[history.length - 1];
-    const squares = current.squares.slice();
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);//grabs all history of moves
+    const current = history[history.length - 1];//grabs current move
+    const squares = current.squares.slice();//grabs sqaures
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
@@ -43,9 +39,9 @@ class Game extends React.Component {
   }
 
   render() {
-    const history = this.state.history;
-    const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
+    const history = this.state.history;//history of moves
+    const current = history[this.state.stepNumber];//current board/move
+    const winner = calculateWinner(current.squares);//Did you win?
 
     const moves = history.map((step, move) => {
       const desc = move ?
