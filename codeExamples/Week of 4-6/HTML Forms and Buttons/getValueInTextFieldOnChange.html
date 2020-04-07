@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Get Value in Text Field</title>
+    </head>
+
+    <body onload="main()">
+        <form>
+            Provide value and press enter:
+            <!-- Notice how we set text field size -->
+            <input type="text" id="myTextField" size="15"/><br/>
+        </form>
+
+        <script>
+
+            function main() {
+                var myTextFieldInHTMLForm = document.getElementById("myTextField");
+                myTextFieldInHTMLForm.onchange = displayValue; // DO NOT PUT ()
+            }
+
+            function displayValue() {
+                var myTextFieldInHTMLForm = document.getElementById("myTextField");
+
+                /* To get the value from the text field you need to use value */
+                var textProvided = myTextFieldInHTMLForm.value;
+
+                alert("The value the user entered is: " + textProvided);
+                alert("Adding 10 to the value provided generates: " + (Number(textProvided) + 10));
+            }
+        </script>
+    </body>
+</html>

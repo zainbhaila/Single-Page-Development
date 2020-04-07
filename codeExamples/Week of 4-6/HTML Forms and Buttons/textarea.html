@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Text Area</title>
+    </head>
+
+    <body onload="main()">
+        <h2>Regrade Request Form</h2>
+        <form>
+            <!-- Notice the default text -->
+            <textarea id="request" rows="8" cols="50">Please check my last assignment.</textarea>
+            <br/>
+            <input type="button" id="processDataButton" value="Process"/>
+            <input type="reset"/>
+        </form>
+
+        <script>
+            function main() {
+                document
+                    .getElementById("processDataButton")
+                    .onclick = processData;
+            }
+
+            function processData() {
+                var request = document.getElementById("request");
+                alert("The processing request is: \n" + request.value);
+            }
+        </script>
+    </body>
+</html>

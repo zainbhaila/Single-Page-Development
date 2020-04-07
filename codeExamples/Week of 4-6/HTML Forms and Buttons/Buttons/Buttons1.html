@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Buttons</title>
+        <meta charset="UTF-8"/>
+    </head>
+
+    <body>
+
+        <span id="someText">Nothing to see here...</span>
+        <form>
+            <input type="button" onclick="action1();" value="Click This"/>
+            <input type="button" onclick="action2();" value="Don't Click This"/>
+        </form>
+
+        <script>
+            function action1() {
+                someText.innerHTML = "Thanks for clicking!";
+            }
+
+            function action2() {
+                someText.innerHTML = "Please don't do that!";
+            }
+        </script>
+    </body>
+</html>

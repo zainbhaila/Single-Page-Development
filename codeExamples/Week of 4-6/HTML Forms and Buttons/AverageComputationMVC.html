@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Average Computation (MVC)</title>
+    </head>
+
+    <body onload="main()">
+        <script>
+            "use strict";
+
+            var maxRows;
+
+            function main() {
+                defineGUISetEventHandler();
+            }
+
+            function defineGUISetEventHandler() {
+                var cellColor = "#FFF1CC";
+                maxRows = Number(prompt("Input number of entries to average"));
+
+                document.writeln("<h1>Average calculator</h1>");
+                document.writeln("<form>");
+                for (let row = 0; row < maxRows; row++) {
+                    let rowString = "<input id=\"T" + row + "\"";
+                    rowString += " style=\"background-color:" + cellColor + ";font-weight:bold;\"";
+                    rowString += " type=\"text\" maxlength=\"5\" size=\"10\" /><br />";
+                    document.writeln(rowString);
+                }
+                document.writeln("<input type=\"button\" id=\"averageButton\" value=\"Average\" />");
+                document.writeln("</form>");
+                document
+                    .getElementById("averageButton")
+                    .onclick = processAverageController;
+            }
+
+            function processAverageController() {
+                var nextValue;
+                var dataArray = new Array(maxRows);
+
+                for (let row = 0; row < maxRows; row++) {
+                    nextValue = document
+                        .getElementById("T" + row)
+                        .value;
+                    dataArray[row] = Number(nextValue);
+                }
+                alert("Average value is: " + computeAverage(dataArray));
+            }
+
+            function computeAverage(data) {
+                var k,
+                    sum = 0;
+
+                for (k = 0; k < data.length; k++) {
+                    sum += data[k];
+                }
+
+                return sum / data.length;
+            }
+        </script>
+    </body>
+</html>

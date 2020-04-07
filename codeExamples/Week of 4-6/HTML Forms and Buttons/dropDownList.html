@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Drow-Down List</title>
+    </head>
+
+    <body onload="main()">
+        <h2>Programming Language Preference</h2>
+        <form>
+            <select id="preference">
+                <option value="JavaScript">JavaScript</option>
+                <option value="Ruby" selected="selected">Ruby</option>
+                <option value="PHP">PHP</option>
+            </select>
+
+            <input type="button" id="processDataButton" value="Process"/>
+            <input type="reset"/>
+        </form>
+
+        <script>
+
+            function main() {
+                document
+                    .getElementById("processDataButton")
+                    .onclick = processData;
+            }
+
+            function processData() {
+                var preference = document.getElementById("preference");
+                var optionSelected = preference[preference.selectedIndex].value;
+                alert("The language preferred by the user is: " + optionSelected);
+            }
+        </script>
+    </body>
+</html>

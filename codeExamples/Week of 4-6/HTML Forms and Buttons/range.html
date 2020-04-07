@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>Range</title>
+        <meta charset="UTF_8"/>
+        <style>
+            label {
+                display: inline-block;
+                width: 3em;
+            }
+
+            #colorBox {
+                width: 200px;
+                height: 100px;
+                background-color: black;
+            }
+
+            p {
+                width: 200px;
+                height: 100px;
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+                font-size: 25px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <h2>Range control</h2>
+        <div id="colorBox"></div>
+        <form>
+            <label for="red_value">Red:</label>
+            <input type="range" id="red_value" min="0" max="255" onchange="changeColor()"/>
+            <br>
+            <label for="green_value">Green:</label>
+            <input type="range" id="green_value" min="0" max="255" onchange="changeColor()">
+            <!-- note that no change occurs until the mouse button is
+                released -->
+            <br>
+            <label for="blue_value">Blue:</label>
+            <input type="range" id="blue_value" min="0" max="255"
+            oninput="changeColor()"/>
+            <!-- note the constant color change as we move the slider -->
+        </form>
+
+        <script>
+            function changeColor() {
+                var color = "rgb(" + red_value.value + "," + green_value.value + "," + blue_value.value + ")";
+                colorBox.style.backgroundColor = color;
+                colorBox.innerHTML = "<p>" + color + "</p>";
+            }
+        </script>
+    </body>
+
+</html>

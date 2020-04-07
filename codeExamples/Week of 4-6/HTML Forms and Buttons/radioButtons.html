@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Radio Buttons</title>
+    </head>
+
+    <body onload="main()">
+        <h2>Category</h2>
+        <form>
+            <!-- Notice: using same name but different ids -->
+            <input type="radio" id="radioHS" name="category" value="hs"/>HS<br/>
+            <input
+                type="radio"
+                id="radioUndergraduate"
+                name="category"
+                value="undergraduate"/>Undergraduate<br/>
+            <input
+                type="radio"
+                id="radioGraduate"
+                name="category"
+                value="graduate"
+                checked="checked"/>Graduate<br/>
+            <input type="button" id="processDataButton" value="Process"/>
+            <input type="reset"/>
+        </form>
+
+        <script>
+
+            function main() {
+                document
+                    .getElementById("processDataButton")
+                    .onclick = processData;
+            }
+
+            function processData() {
+                /* Retrieving the values NOTE: using getElementsByName */
+                var category = document.getElementsByName("category");
+                var idx,
+                    message = "";
+                /* Can we stop the next loop once we found one entry true? */
+                category.forEach(c => {
+                    if(c.checked)
+                        message += c.value + " is checked.";
+                });
+
+                alert(message);
+            }
+        </script>
+    </body>
+</html>
