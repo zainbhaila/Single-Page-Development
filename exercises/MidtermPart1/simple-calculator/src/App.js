@@ -12,14 +12,12 @@ class App extends Component {
     keyPress(key) {
       let string = this.state.inputs;
 
-      if (key === "CE") { // clear single entry unless after calculation or empty
-        if (string !== "") {
-          if (this.state.calculated === true) { // clear all after a calculation
-            this.setState({inputs: "", calculated: false});
-          }
-          else {
-            this.setState({inputs: string.slice(0, -1), calculated: false});
-          }
+      if (key === "CE") { // clear single entry unless empty
+        if (string === "") {
+          this.setState({inputs: "", calculated: false});
+        }
+        else {
+          this.setState({inputs: string.slice(0, -1), calculated: false});
         }
       }
       else if (key === "C") { // clear all
@@ -36,13 +34,14 @@ class App extends Component {
             }
           }
 
-          if (string.slice(0,2) === "++" || string.slice(0,2) === "--") {
+          if (string.slice(0,2) === "++" || string.slice(0,2) === "--"
+              || string.search(/([+\-*/]{3,})|([*/]{2,})/) !== -1) { // invalid operators
             string = "Error";
           }
 
           if (string !== "Error") {
             try { // try to evaluate expression
-              string = eval(this.state.inputs.replace('--', '+').replace('++', '+'));
+              string = "" + eval(this.state.inputs.replace('--', '+').replace('++', '+'));
             }
             catch { // Error if eval fails
               string = "Error";
@@ -53,7 +52,7 @@ class App extends Component {
         }
       }
       else { // numerical, parentheses, or operator input
-        if (this.state.calculated === true) {
+        if (this.state.calculated === true && key.search(/[+\-*/]/) !== 0) {
           this.setState({inputs: key, calculated: false});
         }
         else {
