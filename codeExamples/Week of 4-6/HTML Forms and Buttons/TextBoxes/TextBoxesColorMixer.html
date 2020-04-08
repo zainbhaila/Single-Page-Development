@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Color Mixer</title>
+        <meta charset="UTF-8"/>
+    </head>
+
+    <body>
+
+        <div
+            id="colorBox"
+            style="background-color:black; width:400px; margin-bottom: 30px; height:200px"></div>
+        <form>
+            Red:
+            <input type="text" id="redBox" size="3" maxlength="3" value="0"/>
+            Green:
+            <input type="text" id="greenBox" size=3; maxlength=3; value="0"/>
+            Blue:
+            <input
+                type="text"
+                id="blueBox"
+                style="width:100px; background-color: #ffeeaa"
+                maxlength="3"
+                value="0"/>
+            <br/>
+            <br/>
+            <input type="button" onclick="updateColor();" value="Change Color"/>
+            <button type="button" onclick="updateColor();">Change Color</button>
+        </form>
+
+        <script>
+            function updateColor() {
+                var red = Number(redBox.value);
+                var green = Number(greenBox.value);
+                var blue = Number(blueBox.value);
+                colorBox.style.backgroundColor = "rgb(" + red + "," + green + "," + blue + ")";
+            }
+        </script>
+    </body>
+</html>

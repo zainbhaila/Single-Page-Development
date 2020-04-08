@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Modify Content</title>
+    </head>
+    <body onload="main()">
+        <p id="gettysburg">
+            Four score and seven years ago our fathers brought forth on this continent, a
+            new nation, conceived in
+            <strong>Liberty</strong>, and dedicated to the proposition that all men are created equal.
+        </p>
+
+        <h3>Result of innerHTML:</h3>
+        <article id="innerHTMLOutput"></article>
+        <h3>Result of textContent:</h3>
+        <article id="textContentOutput"></article>
+        <!-- <textarea id="textContentOutput" rows="6" cols="30" readonly>...</textarea> -->
+
+        <form>
+            <input id="modifyButton" type="button" value="Modify"/>
+        </form>
+
+        <script>
+
+            function main() {
+                var button = document.getElementById("modifyButton");
+                button.onclick = changeContent;
+            }
+
+            function changeContent() {
+                var paragraph = document.getElementById("gettysburg");
+
+                document
+                    .getElementById("innerHTMLOutput")
+                    .innerHTML = paragraph.textContent + "<br /><br /><em>Abraham Lincoln</em>";
+
+                document
+                    .getElementById("textContentOutput")
+                    .textContent = paragraph.innerHTML + "<br /><br /><em>Abraham Lincoln</em>";
+            }
+        </script>
+    </body>
+</html>

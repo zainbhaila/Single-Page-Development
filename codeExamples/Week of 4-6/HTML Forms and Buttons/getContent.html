@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Get Content</title>
+    </head>
+    <body onload="main()">
+        <p id="gettysburg">
+            Four score and seven years ago our fathers brought forth on this continent, a
+            new nation, conceived in
+            <strong>Liberty</strong>, and dedicated to the proposition that all men are created equal.
+        </p>
+
+        <p id="test">Test <strong>Block</strong></p>
+
+        <script>
+
+            function main() {
+                var paragraph = document.getElementById("gettysburg");
+                var innerHTMLContent = paragraph.innerHTML;
+                alert(innerHTMLContent);
+                var textContent = paragraph.textContent;
+                alert(textContent);
+            }
+        </script>
+    </body>
+</html>

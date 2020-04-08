@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TextBoxes</title>
+        <meta charset="UTF-8"/>
+        <style>
+            input {
+                height: 1.6rem;
+                margin-top: 1rem;
+            }
+
+            input[type=button] {
+                background-color: azure;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <form>
+            Name:
+            <input
+                type="text"
+                id="nameBox"
+                size="20"
+                maxlength="30"
+                placeholder="(Enter your name)"/><br> 
+                <!-- note that placeholder is used here but value in the next -->
+            Age:
+            <input type="text" id="ageBox" size=3; maxlength=3; value="7"/>
+            <br><br>
+            <input type="button" onclick="makeCard();" value="Generate Birthday Card"/>
+        </form>
+
+        <hr/>
+
+        <div id="par1"></div>
+        <div id="par2"></div>
+
+        <script>
+            function makeCard() {
+
+                var age = Number(ageBox.value);
+
+                par1.innerHTML = "<h1>Happy Birthday, " + nameBox.value + "</h1>";
+                candles = "";
+                for (var i = 0; i < age; i = i + 1) {
+                    candles = candles + "<img src='candle.jpg'>";
+                }
+                par2.innerHTML = candles;
+            }
+        </script>
+    </body>
+</html>

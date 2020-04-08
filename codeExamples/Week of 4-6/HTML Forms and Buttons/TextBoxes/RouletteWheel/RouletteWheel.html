@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Roulette Wheel</title>
+        <meta charset="UTF-8"/>
+    </head>
+
+    <body style="background-color: black;">
+
+        <div
+            id="topArea"
+            style="color:white; font-size:180pt; font-family:'arial black'; text-align:center">
+            <img id="picture" src="stoppedWheel.jpg"/>
+        </div>
+
+        <form style="color:white; text-align: center">
+            Wager:
+            <input type="text" id="betAmount" size="4" value="100"/>
+            &nbsp; &nbsp; &nbsp; Number Selected:
+            <input type="text" id="numberChosen" size=2; maxlength=2; value="17"/>
+
+            <p id="moneyAmount" style="font-size:20pt">$1000</p>
+
+            <input
+                id="spinButton"
+                type="button"
+                style="width:150px; height:50px; margin: auto;"
+                onclick="spinWheel();"
+                value="SPIN"/>
+        </form>
+
+        <script>
+            var money = 1000;
+
+            function spinWheel() {
+                if (money >= Number(betAmount.value)) {
+                    spinButton.style.visibility = "hidden";
+                    picture.src = "spinningWheel.gif";
+                    setTimeout(stopWheel, 3500);
+                }
+            }
+
+            function stopWheel() {
+                money = money - Number(betAmount.value);
+                var numberOnWheel = Math.floor(Math.random() * 37);
+                if (numberOnWheel === Number(numberChosen.value)) {
+                    topArea.innerHTML = "<span style='color:red; font-size:200pt;'>" + numberOnWheel + "</span>";
+                    money = money + Number(betAmount.value) * 36;
+                } else {
+                    topArea.innerHTML = numberOnWheel;
+                }
+                setTimeout(putWheelBackOnScreen, 1500);
+            }
+
+            function putWheelBackOnScreen() {
+                topArea.innerHTML = "<img id='picture' src='stoppedWheel.jpg' />";
+                moneyAmount.innerHTML = "$" + money;
+                if (money > 0) {
+                    spinButton.style.visibility = "visible";
+                }
+            }
+        </script>
+    </body>
+</html>

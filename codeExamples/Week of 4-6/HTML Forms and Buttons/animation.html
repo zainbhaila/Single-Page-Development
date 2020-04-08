@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Animation Example</title>
+    </head>
+
+    <body onload="main()">
+        <h1>Animation Example</h1>
+        <img
+            id="myImage"
+            src="images/Testudo1.jpg"
+            width="444"
+            height="293"
+            alt="animationImg"/>
+
+        <script>
+
+            function main() {
+                var intervalInMilliseconds = 1000;
+                /* setInterval calls the function swapImages at the specified rate */
+                //setInterval("swapImages()", intervalInMilliseconds);
+
+                setInterval(swapImages, intervalInMilliseconds);
+            }
+
+            function swapImages() {
+                var imageElement = document.getElementById("myImage");
+                var imageName = imageElement.getAttribute("src");
+                var nextImage;
+
+                if (imageName === "images/Testudo1.jpg") {
+                    nextImage = "images/Testudo2.jpg";
+                } else if (imageName === "images/Testudo2.jpg") {
+                    nextImage = "images/Testudo3.jpg";
+                } else {
+                    nextImage = "images/Testudo1.jpg";
+                }
+                imageElement.setAttribute("src", nextImage);
+            }
+        </script>
+    </body>
+</html>
