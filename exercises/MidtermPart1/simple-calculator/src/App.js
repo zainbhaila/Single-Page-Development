@@ -12,8 +12,8 @@ class App extends Component {
     keyPress(key) {
       let string = this.state.inputs;
 
-      if (key === "CE") { // clear single entry unless empty
-        if (string === "") {
+      if (key === "CE") { // clear single entry unless empty or Error
+        if (string === "" || string === "Error") {
           this.setState({inputs: "", calculated: false});
         }
         else {
@@ -41,7 +41,7 @@ class App extends Component {
 
           if (string !== "Error") {
             try { // try to evaluate expression
-              string = "" + eval(this.state.inputs.replace('--', '+').replace('++', '+'));
+              string = "" + eval(string.replace('--', '+').replace('++', '+'));
             }
             catch { // Error if eval fails
               string = "Error";
@@ -52,11 +52,11 @@ class App extends Component {
         }
       }
       else { // numerical, parentheses, or operator input
-        if (this.state.calculated === true && key.search(/[+\-*/]/) !== 0) {
+        if ((this.state.calculated === true && key.search(/[+\-*/]/) !== 0) || string === "Error") {
           this.setState({inputs: key, calculated: false});
         }
         else {
-          this.setState({inputs: this.state.inputs + key, calculated: false});
+          this.setState({inputs: string + key, calculated: false});
         }
       }
     }
